@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: orange;
+            color: white;
+        }
+        .progress {
+            display: grid;
+            grid-template-columns: repeat(34, 18px);
+            gap: 3px;
+            justify-content: center;
+        }
+        .progress input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>HABIT TRACKER</h2>
+        <table>
+            <tr>
+                <th>Bad Habit</th>
+                <th>Trigger</th>
+                <th>Replacement Habit</th>
+                <th>Progress (Daily)</th>
+                <th>Notes</th>
+            </tr>
+            
+            <!-- 6 Habit Rows with 408 Progress Checkboxes Each -->
+            <script>
+                function generateProgress() {
+                    let progressHTML = "";
+                    for (let i = 0; i < 408; i++) {
+                        progressHTML += "<input type='checkbox'>";
+                    }
+                    return progressHTML;
+                }
+            </script>
+            
+            <script>
+                document.write(`
+                    ${Array(6).fill().map(() => `
+                        <tr>
+                            <td contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                            <td><div class="progress">${generateProgress()}</div></td>
+                            <td contenteditable="true"></td>
+                        </tr>
+                    `).join('')}
+                `);
+            </script>
+        </table>
+    </div>
+</body>
+</html>
